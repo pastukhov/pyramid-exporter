@@ -4,6 +4,7 @@
 # for node_exporter textfile collector.
 
 set -uo pipefail
+export LC_ALL=C
 
 TEXTFILE_DIR="${TEXTFILE_DIR:-/var/lib/node_exporter/textfile_collector}"
 PROM_FILE="${TEXTFILE_DIR}/pyramid.prom"
