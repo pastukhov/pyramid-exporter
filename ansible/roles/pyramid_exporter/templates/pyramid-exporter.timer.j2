@@ -1,0 +1,10 @@
+[Unit]
+Description=Run Pyramid metrics collector every {{ pyramid_exporter_timer_interval }}
+
+[Timer]
+OnBootSec={{ pyramid_exporter_timer_boot_delay }}
+OnUnitActiveSec={{ pyramid_exporter_timer_interval }}
+AccuracySec=1s
+
+[Install]
+WantedBy=timers.target

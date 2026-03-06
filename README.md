@@ -121,6 +121,25 @@ Output is written atomically (temp file + `mv`) to avoid partial reads by node_e
 
 Each collector handles errors independently — if one fails, the rest still run and `pyramid_exporter_success` is set to `0`.
 
+## Ansible
+
+An Ansible role is included for deploying to multiple devices.
+
+```bash
+# Add your Pyramid hosts to inventory, then:
+ansible-playbook -i inventory ansible/playbook.yml
+```
+
+Role variables (see `ansible/roles/pyramid_exporter/defaults/main.yml`):
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `pyramid_exporter_textfile_dir` | `/var/lib/node_exporter/textfile_collector` | Output directory |
+| `pyramid_exporter_ec_timeout` | `5` | ec_cli timeout (seconds) |
+| `pyramid_exporter_timer_interval` | `15s` | Collection interval |
+| `pyramid_exporter_timer_boot_delay` | `30s` | Delay after boot |
+| `pyramid_exporter_install_jq` | `true` | Install jq via apt |
+
 ## Uninstall
 
 ```bash

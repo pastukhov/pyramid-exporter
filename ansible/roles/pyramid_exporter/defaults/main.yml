@@ -1,0 +1,6 @@
+---
+pyramid_exporter_textfile_dir: /var/lib/node_exporter/textfile_collector
+pyramid_exporter_ec_timeout: 5
+pyramid_exporter_timer_interval: 15s
+pyramid_exporter_timer_boot_delay: 30s
+pyramid_exporter_install_jq: true

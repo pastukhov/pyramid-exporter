@@ -1,0 +1,10 @@
+---
+- name: Reload systemd
+  ansible.builtin.systemd:
+    daemon_reload: true
+
+- name: Restart pyramid-exporter timer
+  ansible.builtin.systemd:
+    name: pyramid-exporter.timer
+    state: restarted
+    enabled: true

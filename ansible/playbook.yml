@@ -1,0 +1,6 @@
+---
+- name: Install Pyramid Exporter
+  hosts: pyramids
+  become: true
+  roles:
+    - pyramid_exporter
