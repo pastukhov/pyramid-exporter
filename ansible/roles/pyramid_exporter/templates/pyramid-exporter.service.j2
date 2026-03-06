@@ -5,6 +5,7 @@ After=network.target
 [Service]
 Type=oneshot
 ExecStart=/usr/local/bin/pyramid_exporter.sh
+Environment=LC_ALL=C
 Environment=TEXTFILE_DIR={{ pyramid_exporter_textfile_dir }}
 Environment=EC_TIMEOUT={{ pyramid_exporter_ec_timeout }}
 User=root
