@@ -1,0 +1,8 @@
+[Unit]
+Description=Prometheus metrics collector for M5Stack AI Pyramid
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/pyramid_exporter.sh
+User=root
