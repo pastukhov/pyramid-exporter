@@ -18,7 +18,7 @@
 
 - name: Install pyramid_exporter.sh
   ansible.builtin.copy:
-    src: pyramid_exporter.sh
+    src: "{{ playbook_dir }}/../pyramid_exporter.sh"
     dest: /usr/local/bin/pyramid_exporter.sh
     mode: "0755"
   notify: Restart pyramid-exporter timer

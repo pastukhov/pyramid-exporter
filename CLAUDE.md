@@ -21,25 +21,23 @@ Two `ec_cli` calling conventions:
 
 Output is written atomically: temp file → `mv` to final `.prom`.
 
+`LC_ALL=C` is forced both in the script and systemd unit to avoid locale-dependent decimal separators in `awk` output.
+
 ## Key Files
 
 - `pyramid_exporter.sh` — main exporter script (all collectors)
 - `install.sh` — installs script, systemd units, validates node_exporter config
 - `pyramid-exporter.service` / `.timer` — systemd oneshot + 15s timer
+- `ansible/` — Ansible role + playbook for multi-device deployment (symlinks to root `pyramid_exporter.sh`)
 
 ## Testing
 
-No automated tests. Manual verification:
+No automated tests. Manual verification (requires running on actual AI Pyramid hardware with `ec_cli`):
 
 ```bash
-# Run exporter directly (requires ec_cli on the device)
 sudo ./pyramid_exporter.sh
 cat /var/lib/node_exporter/textfile_collector/pyramid.prom
-
-# Validate output format
 promtool check metrics < /var/lib/node_exporter/textfile_collector/pyramid.prom
-
-# Check metrics via node_exporter
 curl -s localhost:9100/metrics | grep pyramid_
 ```
 
